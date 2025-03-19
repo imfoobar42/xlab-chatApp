@@ -4,7 +4,9 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Home</Text>
+      <Text style={styles.text}>Welcome ...</Text>
+      <Text style={styles.text}>Akash Singh </Text>
+      <Text style={styles.text}>Email id : singh74@buffalo.edu</Text>
     </View>
   );
 }

@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function ExpertScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Expert</Text>
+      <Text style={styles.text}>Chat with Expert</Text>
     </View>
   );
 }
