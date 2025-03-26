@@ -1,7 +1,5 @@
-
-
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 
 export default function SignupScreen({ navigation }) {
   const [name, setName] = useState('');
@@ -15,7 +13,14 @@ export default function SignupScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.boldText}>Sign Up</Text>
+      {/* Logo */}
+      <Image
+        source={require('../assets/Complete.png')} // Replace with your logo
+        style={styles.logo}
+      />
+
+      {/* Title */}
+      <Text style={styles.title}>Sign Up</Text>
 
       {/* Signup Form */}
       <View style={styles.formContainer}>
@@ -30,6 +35,8 @@ export default function SignupScreen({ navigation }) {
           placeholder="Enter your email"
           value={email}
           onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
         <TextInput
           style={styles.input}
@@ -38,14 +45,20 @@ export default function SignupScreen({ navigation }) {
           onChangeText={setPassword}
           secureTextEntry
         />
-        <Button title="Sign Up" onPress={handleSignup} />
+
+        {/* Sign Up Button */}
+        <TouchableOpacity style={styles.button} onPress={handleSignup}>
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Navigate to Login Page */}
-      <Button
-        title="Already have an account? Log In"
-        onPress={() => navigation.navigate('Login')}
-      />
+      <View style={styles.loginContainer}>
+        <Text style={styles.loginText}>Already have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.loginLink}>Log In</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -53,14 +66,20 @@ export default function SignupScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    // margin: 49,
+    padding: 20,
+    backgroundColor: '#f5f5f5', // Light background for a modern look
   },
-  boldText: {
+  logo: {
+    width: 300,
+    height: 155,
+    marginBottom: 30, // Space between logo and inputs
+  },
+  title: {
+    fontSize: 30,
     fontWeight: 'bold',
-    fontSize: 45,
+    color: '#8B008B', // Purple color for consistency
     marginBottom: 20,
   },
   formContainer: {
@@ -70,12 +89,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingLeft: 10,
     width: '80%',
-    borderRadius: 5,
+    height: 50,
+    borderColor: '#8B008B', // Purple border
+    borderWidth: 2,
+    marginBottom: 20,
+    paddingHorizontal: 15,
+    borderRadius: 25,
+    backgroundColor: '#fff',
+    fontSize: 16,
+  },
+  button: {
+    backgroundColor: '#8B008B', // Purple button
+    width: '80%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 25,
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  loginContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  loginText: {
+    fontSize: 16,
+    color: '#8B008B', // Purple color for consistency
+  },
+  loginLink: {
+    fontSize: 16,
+    color: '#8B008B', // Purple color for the link
+    fontWeight: 'bold',
   },
 });
