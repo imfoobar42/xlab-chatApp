@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView, Image } from 'react-native';
-import * as DocumentPicker from 'expo-document-picker'; // Import expo document picker
 
 // Import your bot logo
 import botLogo from '../assets/Logo.png'; // Replace with the path to your logo image
@@ -8,7 +7,6 @@ import botLogo from '../assets/Logo.png'; // Replace with the path to your logo 
 export default function ChatScreen() {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
-  const [video, setVideo] = useState(null);
 
   // Simulate a chatbot response
   const handleSend = () => {
@@ -19,22 +17,6 @@ export default function ChatScreen() {
         { sender: 'bot', text: `You said "${message}"` }, // Simulated response from the bot
       ]);
       setMessage('');
-    }
-  };
-
-  // Handle video selection
-  const handleVideoSelect = async () => {
-    try {
-      const result = await DocumentPicker.getDocumentAsync({
-        type: '*/*', // Allows all file types, you can limit to videos by using 'video/*'
-      });
-
-      if (result.type === 'success' && result.uri) {
-        setVideo(result); // Store the selected video
-        console.log(result);
-      }
-    } catch (err) {
-      console.log('Error picking document', err);
     }
   };
 
@@ -65,20 +47,9 @@ export default function ChatScreen() {
           onChangeText={setMessage}
           placeholder="Type your message here..."
         />
-        <View style={styles.buttonsContainer}>
-          {/* Send Button */}
-          <Button title="Send" onPress={handleSend} />
-          {/* Video Upload Button */}
-          <Button title="Upload Video" onPress={handleVideoSelect} />
-        </View>
+        {/* Send Button */}
+        <Button title="Send" onPress={handleSend} />
       </View>
-
-      {/* Optional: Display the uploaded video (if any) */}
-      {video && (
-        <View style={styles.videoPreview}>
-          <Text>Video: {video.name}</Text>
-        </View>
-      )}
     </View>
   );
 }
@@ -112,6 +83,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', // Align input field and buttons horizontally
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginTop: 10,
   },
   input: {
     height: 40,
@@ -121,16 +93,5 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     marginBottom: 10,
     flex: 1, // Allow the input field to take up available space
-  },
-  buttonsContainer: {
-    flexDirection: 'row', // Align buttons horizontally
-    justifyContent: 'space-between',
-    marginLeft: 10,
-  },
-  videoPreview: {
-    marginTop: 10,
-    padding: 10,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 5,
   },
 });

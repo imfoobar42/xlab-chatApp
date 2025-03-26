@@ -34,7 +34,7 @@ export default function BottomTabs() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#007AFF',
+        tabBarActiveTintColor: '##8B008B',
         tabBarInactiveTintColor: 'gray',
         headerShown: false, // Hide default header since we are adding CustomHeader manually
       })}
