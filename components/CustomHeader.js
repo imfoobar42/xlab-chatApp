@@ -1,21 +1,21 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Import Ionicons
+import { Ionicons } from '@expo/vector-icons';
 
-export default function CustomHeader({ navigation }) {
+export default function CustomHeader({ navigation, title }) {
   return (
     <View style={styles.header}>
-      {/* Notification Icon */}
-      <TouchableOpacity onPress={() => console.log('Notifications pressed')}>
-        <Ionicons name="notifications-outline" size={24} color="#333" />
+      {/* Left - Notification Icon */}
+      <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
+        <Ionicons name="notifications-outline" size={24} color="black" style={styles.icon} />
       </TouchableOpacity>
 
-      {/* Title */}
-      <Text style={styles.headerTitle}>PAC.AI</Text>
+      {/* Center - Title */}
+      <Text style={styles.title}>{title}</Text>
 
-      {/* User Icon */}
-      <TouchableOpacity onPress={() => console.log('User profile pressed')}>
-        <Ionicons name="person-outline" size={24} color="#333" />
+      {/* Right - Profile Icon */}
+      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+        <Ionicons name="person-circle-outline" size={24} color="black" style={styles.icon} />
       </TouchableOpacity>
     </View>
   );
@@ -24,17 +24,26 @@ export default function CustomHeader({ navigation }) {
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 15,
+    justifyContent: 'space-between',
+    backgroundColor: 'white', // White background
     paddingVertical: 10,
-    backgroundColor: '#fff', // Header background color
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    paddingHorizontal: 15,
+    height: 60,
+    // Shadow properties for iOS
+    shadowColor: '#000', // Shadow color (black)
+    shadowOffset: { width: 0, height: 2 }, // Offset of the shadow (vertical)
+    shadowOpacity: 0.1, // Transparency of the shadow
+    shadowRadius: 5, // Radius of the shadow blur
+    borderBottomWidth: 1, // Optional: Border at the bottom
+    borderBottomColor: '#dcdcdc', // Light gray border
   },
-  headerTitle: {
-    fontSize: 18,
+  title: {
+    color: 'black', // Black text color for visibility
+    fontSize: 20,
     fontWeight: 'bold',
-    color: '#333',
+  },
+  icon: {
+    padding: 5,
   },
 });
