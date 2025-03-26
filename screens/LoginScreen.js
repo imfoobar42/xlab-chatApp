@@ -1,15 +1,18 @@
 import React from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import BottomTabs from '../navigation/BottomTabs';
+import SignupScreen from './SignupScreen';
+
 
 export default function LoginScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      
+      <Text style={styles.title}>Sign In</Text>
       <TextInput style={styles.input} placeholder="Email" />
       <TextInput style={styles.input} placeholder="Password" secureTextEntry />
-      
       <Button title="Login" onPress={() => navigation.navigate('BottomTabs')} />
+      <Button title="Signup" onPress={() => navigation.navigate('SignUp')} />
     </View>
   );
 }

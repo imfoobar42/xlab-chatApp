@@ -15,7 +15,7 @@ export default function App() {
         <Stack.Screen name="HomePage" component={HomePage} options={{title:'XLAB HomePage'}}/> 
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignupScreen} />
-        <Stack.Screen name="BottomTabs" component={BottomTabs} options={{title:'XLAB Dashboard'}}/> 
+        <Stack.Screen name="BottomTabs" component={BottomTabs} options={{title:'PAC.AI'}}/> 
       </Stack.Navigator>
     </NavigationContainer>
   );

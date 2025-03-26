@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function ExpertScreen() {
+export default function DiagramScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Chat with Expert</Text>
